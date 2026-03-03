@@ -1,0 +1,163 @@
+/* Ana Arka Plan - Ultra Derin Siyah */
+.analytics-sector {
+  background-color: #05080a;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #e6edf3;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Başlık ve Butonlar */
+.dashboard-title {
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: rebeccapurple;
+}
+
+.btn-export {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s all;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-export:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+/* --- STAT KARTLARI (Görseldeki 4'lü Yapı) --- */
+.cyber-stat-box {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+.cyber-stat-box:hover {
+  border-color: #10b981; /* Neon yeşili parlaması */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* İkon Kutuları */
+.icon-shell {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 1.2rem;
+}
+
+/* Neon Renkleri */
+.icon-shell.green  i { color: #10b981; filter: drop-shadow(0 0 5px #10b981); }
+.icon-shell.blue   i { color: #3b82f6; filter: drop-shadow(0 0 5px #3b82f6); }
+.icon-shell.yellow i { color: #f59e0b; filter: drop-shadow(0 0 5px #f59e0b); }
+.icon-shell.red    i { color: #ef4444; filter: drop-shadow(0 0 5px #ef4444); }
+
+/* Trend Rozeti (Sağ Üstteki %'lik Kısım) */
+.trend-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+/* Değer ve Etiket Yazıları */
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  color: white;
+}
+
+.stat-label {
+  color: #8b949e;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* --- GRAFİK KARTLARI --- */
+.graph-card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin-bottom: 2rem;
+}
+
+/* Custom Scrollbar (Tarayıcıya uyum için) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
+}
+
+/* Başlığın altındaki o küçük açıklama yazısı için */
+.analytics-sector .text-muted {
+  color: #8b949e !important; /* Standart gri, istersen #ccd1d5 yaparak daha da açabilirsin */
+  opacity: 1 !important; /* Eğer saydamlık varsa onu kaldırır */
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Eğer direkt p etiketine müdahale etmek istersen */
+.analytics-sector p {
+  color: #a1a1aa !important;
+}
+
+/* Grafikteki eksen yazılarını SVG üzerinden parlat */
+::ng-deep .apexcharts-xaxis-label,
+::ng-deep .apexcharts-yaxis-label {
+  fill: #8b949e !important;
+}
+
+/* Tooltip (Üzerine gelince açılan kutu) Cyber Tasarımı */
+::ng-deep .apexcharts-tooltip {
+  background: #161b22 !important; /* Koyu arka plan */
+  color: #ffffff !important;      /* Beyaz yazı */
+  border: 1px solid #30363d !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Tooltip başlığı (Tarih/Kategori adı) */
+::ng-deep .apexcharts-tooltip-title {
+  background: #21262d !important;
+  border-bottom: 1px solid #30363d !important;
+  color: #8b949e !important;
+}
+
+/* Tooltip içindeki sayı değerleri */
+::ng-deep .apexcharts-tooltip-text-y-value {
+  color: #ffffff !important;
+  font-weight: bold !important;
+}

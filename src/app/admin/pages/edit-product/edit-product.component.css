@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0a0a12 0%, #050509 100%);
+  padding: 50px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.super-vivid-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.vivid-card {
+  background: rgba(10, 10, 20, 0.9);
+  border: 2px solid #00fff2;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 0 30px rgba(0, 255, 242, 0.2);
+}
+
+.form-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #00fff2;
+  text-shadow: 0 0 10px #00fff2;
+  margin: 0;
+}
+
+.vivid-neon-icon {
+  font-size: 3rem;
+  color: #00fff2;
+  text-shadow: 0 0 15px #00fff2;
+}
+
+.vivid-input {
+  background: rgba(0, 255, 242, 0.05) !important;
+  border: 1px solid rgba(0, 255, 242, 0.3);
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.vivid-input:focus {
+  border-color: #ff007f;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+  outline: none;
+}
+
+/* Kategori Liste Renkleri */
+.vivid-input option {
+  background-color: #121225;
+  color: #00fff2;
+  padding: 10px;
+}
+
+.form-label {
+  font-weight: 700;
+  color: #00fff2;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.btn-vivid-pulse {
+  background: linear-gradient(45deg, #ff007f, #8000ff);
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  padding: 18px;
+  border-radius: 12px;
+  animation: pulse-border 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 20px rgba(255, 0, 127, 0.5); }
+  70% { box-shadow: 0 0 30px rgba(255, 0, 127, 0.6), 0 0 0 10px rgba(255, 0, 127, 0); }
+  100% { box-shadow: 0 0 20px rgba(255, 0, 127, 0.5); }
+}
+
+.vivid-addon {
+  background: rgba(0, 255, 242, 0.15);
+  border: 1px solid rgba(0, 255, 242, 0.3);
+  color: #00fff2;
+}

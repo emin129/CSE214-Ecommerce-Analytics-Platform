@@ -1,0 +1,57 @@
+<div class="super-vivid-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="vivid-card shadow-2xl">
+
+    <div class="form-header">
+      <i class="bi bi-pencil-square vivid-neon-icon"></i>
+      <div class="header-text">
+        <h2 class="form-title neon-text-cyan">Edit Product Asset</h2>
+        <p class="form-subtitle">Updating Database ID: #{{productId}}</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Asset Name</label>
+      <input class="form-control vivid-input" formControlName="name" />
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <label class="form-label neon-text-cyan">Price ($)</label>
+        <div class="input-group">
+          <span class="input-group-text vivid-addon">$</span>
+          <input class="form-control vivid-input" type="number" formControlName="price" />
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <label class="form-label neon-text-cyan">In-Stock</label>
+        <input class="form-control vivid-input" type="number" formControlName="stock" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Description</label>
+      <textarea class="form-control vivid-input" formControlName="description" rows="3"></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Image URL</label>
+      <input class="form-control vivid-input" formControlName="imageUrl" />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Category</label>
+      <select class="form-select vivid-input" formControlName="category" [compareWith]="compareCategories">
+        <option [ngValue]="null" disabled>-- Select Verified Category --</option>
+        <option *ngFor="let cat of categoryOptions" [ngValue]="cat">
+          {{ cat.name | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <div class="d-grid gap-2 pt-3">
+      <button class="btn btn-vivid-pulse btn-lg" type="submit" [disabled]="form.invalid">
+        <i class="bi bi-save-fill me-2"></i> Commit Changes
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,175 @@
+<div class="olis-dashboard">
+  <div class="neon-blob neon-blob-1"></div>
+  <div class="neon-blob neon-blob-2"></div>
+
+  <div class="main-content p-4 p-md-5">
+
+    <header class="dashboard-header d-flex justify-content-between align-items-center mb-5">
+      <div class="header-text">
+        <h1 class="glitch-text" data-text="ORDER_COMMAND_CENTER">ORDER CENTER</h1>
+        <p class="subtitle">
+          Live Sync: ({{ totalElements | number }} transactions)
+        </p>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-refresh" (click)="loadAllOrders()">
+          <i class="fas fa-sync-alt" [class.fa-spin]="isLoading"></i>
+          <span>Refresh</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="olis-glass-card shadow-lg">
+
+      <div class="table-top-bar d-flex justify-content-between align-items-center p-3 border-bottom border-secondary">
+        <h5 class="text-white mb-0 fs-6 text-uppercase fw-bold">Incoming Stream</h5>
+        <span class="badge-live text-primary">
+          <i class="fas fa-circle-notch fa-spin me-1"></i> Connected
+        </span>
+      </div>
+
+      <div class="table-responsive-custom">
+
+        <table class="olis-table">
+          <thead>
+            <tr>
+              <th>ID_HASH</th>
+              <th>CUSTOMER_CORE</th>
+              <th>AMOUNT</th>
+              <th>TIMESTAMP</th>
+              <th>STATUS</th>
+              <th class="text-center">COMMANDS</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="!isLoading">
+            <tr *ngFor="let order of orders; trackBy: trackByOrder" class="olis-table-row">
+
+              <td class="id-cell">
+                <code>#{{ order.id }}</code>
+              </td>
+
+              <td>
+                <div class="customer-info d-flex align-items-center">
+                  <div class="olis-avatar me-3">
+                    {{ order.user?.username ? order.user.username.charAt(0) : 'U' }}
+                  </div>
+
+                  <div>
+                    <span class="username text-white d-block fw-bold">
+                      {{ order.user?.username || 'Guest' }}
+                    </span>
+
+                    <span class="uid-tag">
+                      UID: {{ order.user?.id || '0000' }}
+                    </span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="amount-cell">
+                {{ (order.totalPrice || 0) | currency:'USD' }}
+              </td>
+
+              <td class="date-cell">
+                <div *ngIf="order.orderDate; else noDate">
+                  <div class="main-date">{{ order.orderDate | date:'mediumDate' }}</div>
+                  <div class="sub-time">{{ order.orderDate | date:'shortTime' }}</div>
+                </div>
+                <ng-template #noDate>
+                  <span class="opacity-50">N/A</span>
+                </ng-template>
+              </td>
+
+              <td>
+                <span class="olis-status-badge"
+                      [ngClass]="(order.status || 'PENDING').toLowerCase()">
+                  {{ order.status || 'PENDING' }}
+                </span>
+              </td>
+
+              <td class="text-center">
+                <div class="command-group d-flex justify-content-center gap-2">
+
+                  <select class="olis-select"
+                          (change)="onStatusChange($event, order.id)">
+                    <option value="" disabled selected>SET_STATUS</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="SHIPPED">SHIPPED</option>
+                    <option value="DELIVERED">DELIVERED</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                  </select>
+
+                  <button class="btn-oli-danger"
+                          (click)="refundOrder(order.id)">
+                    <i class="fas fa-undo"></i>
+                    <span>Refund</span>
+                  </button>
+
+                </div>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="isLoading" class="ulis-loading-signal text-center py-5">
+          <div class="scanner-effect"></div>
+          <p class="text-primary-fade mt-3">LOADING DATA STREAM...</p>
+        </div>
+
+      </div>
+
+      <footer class="olis-pagination p-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+          <p class="text-muted small mb-0">
+            PAGE: <strong>{{ currentPage + 1 }}</strong> / {{ totalPages }}
+            <span class="ms-2">({{ totalElements | number }})</span>
+          </p>
+
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+
+            <button class="btn-pagi-glass" (click)="onPageChange(0)"
+                    [disabled]="currentPage === 0">
+              <i class="fas fa-backward-step"></i>
+              <span>First</span>
+            </button>
+
+            <button class="btn-pagi-glass" (click)="onPageChange(currentPage - 1)"
+                    [disabled]="currentPage === 0">
+              <i class="fas fa-arrow-left"></i>
+              <span>Prev</span>
+            </button>
+
+            <button class="btn-pagi-glass" (click)="onPageChange(currentPage + 1)"
+                    [disabled]="currentPage >= totalPages - 1">
+              <i class="fas fa-arrow-right"></i>
+              <span>Next</span>
+            </button>
+
+            <button class="btn-pagi-glass" (click)="goLastPage()"
+                    [disabled]="currentPage === totalPages - 1">
+              <i class="fas fa-forward-step"></i>
+              <span>Last</span>
+            </button>
+            <div class="page-jump">
+              <input type="number"
+                     min="1"
+                     [max]="totalPages"
+                     [(ngModel)]="jumpPage"
+                     placeholder="Page"
+                     (keyup.enter)="onPageChange(jumpPage - 1)" />
+
+              <button (click)="onPageChange(jumpPage - 1)">Go</button>
+            </div>
+
+          </div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="super-vivid-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="vivid-card shadow-2xl">
+
+    <div class="form-header">
+      <i class="bi bi-rocket-takeoff vivid-neon-icon"></i>
+      <div class="header-text">
+        <h2 class="form-title neon-text-cyan">Deploy New Asset</h2>
+        <p class="form-subtitle">Add product to global command center repository</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Asset Name</label>
+      <input class="form-control vivid-input" formControlName="name" placeholder="Enter product name" />
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <label class="form-label neon-text-cyan">Price ($)</label>
+        <div class="input-group">
+          <span class="input-group-text vivid-addon">$</span>
+          <input class="form-control vivid-input" type="number" formControlName="price" placeholder="0.00" />
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <label class="form-label neon-text-cyan">In-Stock Quantity</label>
+        <input class="form-control vivid-input" type="number" formControlName="stock" placeholder="0" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Asset Description</label>
+      <textarea class="form-control vivid-input" formControlName="description" rows="3" placeholder="Describe the product..."></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">External Image URL</label>
+      <input class="form-control vivid-input" formControlName="imageUrl" placeholder="https://example.com/image.jpg" />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label neon-text-cyan">Database Category</label>
+      <select class="form-select vivid-input" formControlName="category">
+        <option [ngValue]="null" disabled>-- Select Verified Category --</option>
+        <option *ngFor="let cat of categoryOptions" [ngValue]="cat">
+          {{ cat.name | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <div class="d-grid gap-2 pt-3">
+      <button class="btn btn-vivid-pulse btn-lg" type="submit" [disabled]="form.invalid">
+        <i class="bi bi-cloud-arrow-up-fill me-2"></i> Deploy to Repository
+      </button>
+    </div>
+  </form>
+</div>

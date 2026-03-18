@@ -1,0 +1,92 @@
+.command-center {
+  padding: 20px;
+  background: #020202;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-panel {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cyber-input {
+  flex: 1;
+  background: #111;
+  border: 1px solid #00e5ff;
+  color: #00e5ff;
+  padding: 12px;
+  outline: none;
+}
+
+.btn-scan {
+  background: #00e5ff;
+  color: #000;
+  border: none;
+  padding: 0 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cyber-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cyber-table th {
+  text-align: left;
+  padding: 15px;
+  background: #111;
+  color: #888;
+  border-bottom: 2px solid #222;
+}
+
+.cyber-table td {
+  padding: 15px;
+  border-bottom: 1px solid #222;
+}
+
+.owner-name { color: #00e5ff; }
+.owner-email { color: #666; font-size: 0.9em; }
+.total { font-weight: bold; color: #00ff96; }
+
+.store-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.open { background: rgba(0, 255, 150, 0.1); color: #00ff96; border: 1px solid #00ff96; }
+.closed { background: rgba(255, 0, 85, 0.1); color: #ff0055; border: 1px solid #ff0055; }
+
+.btn-toggle {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-danger { background: #ff0055; color: #fff; }
+.btn-success { background: #00ff96; color: #000; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }

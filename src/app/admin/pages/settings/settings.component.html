@@ -1,0 +1,56 @@
+<div class="command-center">
+  <h2>SYSTEM MONITORING - STORE REPORTS</h2>
+
+  <div class="search-panel">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="onSearch()"
+      placeholder="SEARCH BY OWNER USERNAME..."
+      class="cyber-input">
+    <button (click)="onSearch()" class="btn-scan">SCAN SYSTEM</button>
+  </div>
+
+  <div *ngIf="isLoading" class="loader">SYNCING DATA...</div>
+
+  <table class="cyber-table" *ngIf="!isLoading">
+    <thead>
+      <tr>
+        <th>PRODUCT ID</th>
+        <th>PRODUCT NAME</th>
+        <th>STORE NAME</th>
+        <th>OWNER</th>
+        <th>UNIT PRICE</th>
+        <th>STORE STATUS</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of reports">
+        <td>#{{ report.productId }}</td>
+        <td>{{ report.productName }}</td>
+        <td>{{ report.storeName }}</td>
+        <td class="owner-name">{{ report.ownerUsername }}</td>
+        <td class="total">{{ report.unitPrice | currency:'USD' }}</td>
+        <td>
+          <span [class]="'store-badge ' + report.storeStatus">
+            {{ report.storeStatus | uppercase }}
+          </span>
+        </td>
+        <td>
+          <button class="btn-toggle"
+                  [ngClass]="report.storeStatus === 'open' ? 'btn-danger' : 'btn-success'"
+                  (click)="toggleStoreStatus(report)">
+            {{ report.storeStatus === 'open' ? 'BLOCK' : 'ACTIVATE' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="changePage(-1)" [disabled]="currentPage === 0" class="nav-btn">PREV</button>
+    <span class="page-info">PAGE {{ currentPage + 1 }} OF {{ totalPages }}</span>
+    <button (click)="changePage(1)" [disabled]="currentPage + 1 >= totalPages" class="nav-btn">NEXT</button>
+  </div>
+</div>

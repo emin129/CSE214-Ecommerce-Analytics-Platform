@@ -1,0 +1,84 @@
+<div class="become-seller-container">
+  <div class="form-card glass-panel">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="icon-circle glow">
+        <i class="fas fa-rocket"></i>
+      </div>
+
+      <h2 class="title">
+        Seller <span>Center</span>
+      </h2>
+
+      <p class="subtitle">
+        Upgrade your account to start selling
+      </p>
+
+      <div class="header-line"></div>
+    </div>
+
+    <!-- FORM -->
+    <form (ngSubmit)="onSubmit()" #sellerForm="ngForm" class="seller-form" autocomplete="off">
+
+      <!-- STORE NAME -->
+      <div class="input-group fancy">
+        <label>Store Name</label>
+
+        <div class="input-wrapper">
+          <i class="fas fa-shopping-cart"></i>
+
+          <input
+            type="text"
+            name="storeName"
+            [(ngModel)]="sellerData.storeName"
+            required
+            placeholder="Enter your business name"
+            autocomplete="off">
+
+          <span class="input-border"></span>
+        </div>
+      </div>
+
+      <!-- CITY -->
+      <div class="input-group fancy">
+        <label>Operational City</label>
+
+        <div class="input-wrapper">
+          <i class="fas fa-map-marker-alt"></i>
+
+          <input
+            type="text"
+            name="city"
+            [(ngModel)]="sellerData.city"
+            required
+            placeholder="e.g. Istanbul, London"
+            autocomplete="off">
+
+          <span class="input-border"></span>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="info-note glass-mini">
+        <i class="fas fa-shield-alt"></i>
+        <span>Your profile will be updated with <b>Seller</b> privileges.</span>
+      </div>
+
+      <!-- BUTTON -->
+      <button
+        type="submit"
+        class="submit-btn neon-btn"
+        [disabled]="!sellerForm.valid || isLoading">
+
+        <div class="btn-content" *ngIf="!isLoading">
+          <span>ACTIVATE STORE</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <i *ngIf="isLoading" class="fas fa-circle-notch fa-spin"></i>
+      </button>
+
+    </form>
+  </div>
+</div>

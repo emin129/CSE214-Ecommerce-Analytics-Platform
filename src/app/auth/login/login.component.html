@@ -1,0 +1,35 @@
+<div class="login-wrapper">
+  <div class="glass-container">
+    <div class="glass-card">
+
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">E-Commerce Auth</h2>
+        <p class="text-muted small">Secure Access with JWT & AI Layer</p>
+      </div>
+
+      <form (ngSubmit)="onLogin()">
+        <div class="mb-3 custom-input-group">
+          <label>USERNAME</label>
+          <div class="input-with-icon">
+            <i class="bi bi-person-fill"></i>
+            <input [(ngModel)]="username" name="username" class="form-control" required placeholder="Enter username" />
+          </div>
+        </div>
+
+        <div class="mb-3 custom-input-group">
+          <label>PASSWORD</label>
+          <div class="input-with-icon">
+            <i class="bi bi-key-fill"></i>
+            <input [(ngModel)]="password" name="password" type="password" class="form-control" required placeholder="••••••••" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-auth w-100">AUTHENTICATE</button>
+      </form>
+
+      <div class="text-center mt-4">
+        <small class="text-muted">New Here? <a routerLink="/auth/register" class="text-primary-light">Create Account</a></small>
+      </div>
+    </div>
+  </div>
+</div>

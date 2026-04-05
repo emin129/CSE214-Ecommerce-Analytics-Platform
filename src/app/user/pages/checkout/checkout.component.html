@@ -1,0 +1,72 @@
+<div class="checkout-wrapper">
+  <div class="checkout-container">
+
+    <div class="order-summary-section glass-panel">
+      <h2><i class="fas fa-receipt"></i> Order Summary</h2>
+      <div class="item-list">
+        <div class="checkout-item" *ngFor="let item of cartItems">
+          <div class="item-details">
+            <span class="item-name">{{ item.product.name }}</span>
+            <span class="item-qty">x{{ item.quantity }}</span>
+          </div>
+          <span class="item-total">{{ (item.product.unitPrice * item.quantity) | currency:'USD' }}</span>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="total-row grand-total">
+        <span>Total Amount</span>
+        <span>{{ totalPrice | currency:'USD' }}</span>
+      </div>
+
+      <div class="payment-info-box">
+        <p><i class="fas fa-shield-alt"></i> 256-bit SSL Secure Payment</p>
+        <p><i class="fas fa-truck"></i> Free Shipping on all orders</p>
+      </div>
+    </div>
+
+    <div class="payment-section glass-panel">
+      <h2><i class="fas fa-credit-card"></i> Payment Details</h2>
+
+      <div class="stripe-form">
+        <div class="input-group">
+          <label>Cardholder Name</label>
+          <input type="text" class="custom-input" placeholder="John Doe">
+        </div>
+
+        <div class="input-group">
+          <label>Card Number</label>
+          <div id="card-number" class="stripe-input-field"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-7">
+            <div class="input-group">
+              <label>Expiration Date</label>
+              <div id="card-expiry" class="stripe-input-field"></div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="input-group">
+              <label>CVC</label>
+              <div id="card-cvc" class="stripe-input-field"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-text" *ngIf="stripeError">
+          <i class="fas fa-exclamation-triangle"></i> {{ stripeError }}
+        </div>
+
+        <button class="btn-pay-now" (click)="confirmStripePayment()" [disabled]="isStripeLoading || cartItems.length === 0">
+          <span *ngIf="!isStripeLoading">PAY {{ totalPrice | currency:'USD' }}</span>
+          <i *ngIf="isStripeLoading" class="fas fa-spinner fa-spin"></i>
+        </button>
+
+        <button class="btn-cancel" (click)="router.navigate(['/user/cart'])">
+          Cancel & Return
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

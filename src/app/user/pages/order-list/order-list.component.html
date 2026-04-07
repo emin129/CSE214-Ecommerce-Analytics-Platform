@@ -1,0 +1,62 @@
+<div class="orders-wrapper">
+  <div class="header-section">
+    <h2><i class="fas fa-history"></i> My Order History</h2>
+    <p>Track your recent purchases and delivery status.</p>
+  </div>
+
+  <div class="orders-container">
+    <div *ngIf="isLoading" class="loader">Fetching your orders...</div>
+
+    <div *ngIf="!isLoading && orders.length === 0" class="empty-state">
+      <i class="fas fa-shopping-bag"></i>
+      <p>You haven't placed any orders yet.</p>
+    </div>
+
+    <div class="order-card glass-panel" *ngFor="let order of orders">
+      <div class="order-header">
+        <div class="id-date">
+          <span class="order-id">Order #{{ order.id }}</span>
+          <span class="order-date">{{ order.orderDate | date:'mediumDate' }}</span>
+        </div>
+        <div class="order-status" [ngClass]="getStatusClass(order.status)">
+          {{ order.status }}
+        </div>
+      </div>
+
+      <div class="order-body">
+        <div class="order-item" *ngFor="let item of order.items">
+          <div class="item-main-info">
+            <span class="item-name">{{ item.productName }}</span>
+            <span class="item-qty-price">x{{ item.quantity }} - {{ (item.price * item.quantity) | currency:'USD' }}</span>
+          </div>
+
+          <button *ngIf="order.status?.toString()?.toUpperCase() === 'DELIVERED'"
+                  class="btn-review-mini"
+                  (click)="goToReview(item.product?.id || item.productId)">
+            <i class="fas fa-star"></i> Review Product
+          </button>
+        </div>
+      </div>
+
+      <div class="order-footer">
+        <div class="total-price">
+          Total: <span>{{ order.totalPrice | currency:'USD' }}</span>
+        </div>
+
+        <div class="footer-actions">
+          <button *ngIf="order.status?.toString()?.toUpperCase() === 'PENDING'"
+                  class="btn-cancel"
+                  (click)="cancelOrder(order.id)">
+            Cancel Order
+          </button>
+
+          <button *ngIf="['DELIVERED', 'CANCELED', 'REFUNDED'].includes(order.status?.toString()?.toUpperCase())"
+                  class="btn-remove"
+                  (click)="removeOrder(order.id)">
+            <i class="fas fa-trash-alt"></i> Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

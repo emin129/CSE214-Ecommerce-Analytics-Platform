@@ -1,0 +1,48 @@
+<div class="analytics-container">
+  <div class="header-section">
+    <div class="title-group">
+      <h2><i class="fas fa-chart-line"></i> Store Analytics</h2>
+      <p>Monitor your sales performance and top products.</p>
+    </div>
+    <button class="btn-export" (click)="exportReport()">
+      <i class="fas fa-file-pdf"></i> Download PDF
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="loader-container">
+    <div class="spinner"></div>
+    <p>Loading analytics...</p>
+  </div>
+
+  <div [hidden]="isLoading">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon revenue"><i class="fas fa-dollar-sign"></i></div>
+        <div class="stat-info"><h3>Total Revenue</h3><p>{{ totalRevenue | currency:'USD' }}</p></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orders"><i class="fas fa-shopping-bag"></i></div>
+        <div class="stat-info"><h3>Total Orders</h3><p>{{ totalOrders }}</p></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon avg-value"><i class="fas fa-calculator"></i></div>
+        <div class="stat-info"><h3>Avg Order Value</h3><p>{{ averageOrderValue | currency:'USD' }}</p></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon returns"><i class="fas fa-undo"></i></div>
+        <div class="stat-info"><h3>Return Rate</h3><p>%{{ returnRate }}</p></div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-header"><h3>Sales Trend</h3></div>
+        <div class="chart-body"><canvas #salesTrendChart></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header"><h3>Top Products</h3></div>
+        <div class="chart-body"><canvas #topProductsChart></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="detail-wrapper" *ngIf="product">
+  <div class="product-container glass-panel">
+    <div class="image-section">
+      <div class="badge-new" *ngIf="product.stock === null || product.stock > 10">Popular</div>
+      <img [src]="product.imageUrl || 'https://placehold.co/400x400?text=No+Image'" alt="product image">
+    </div>
+
+    <div class="info-section">
+      <nav class="breadcrumb">Products / {{ product.category?.name }}</nav>
+      <h1>{{ product.name }}</h1>
+
+      <div class="rating-display">
+        <span class="stars">
+          <i class="fas fa-star" *ngFor="let s of [1,2,3,4,5]"
+            [style.color]="s <= avgRating ? '#f59e0b' : '#334155'"></i>
+        </span>
+        <span class="review-count">({{ reviews.length }} Customer Reviews)</span>
+      </div>
+
+      <div class="price-tag">{{ product.price | currency:'USD' }}</div>
+      <p class="description">{{ product.description }}</p>
+
+      <div class="stock-status" [class.low]="product.stock !== null && product.stock < 5">
+        <i class="fas"
+          [ngClass]="(product.stock === null || product.stock > 0) ? 'fa-check-circle' : 'fa-times-circle'"></i>
+        {{ (product.stock === null || product.stock > 0) ? (product.stock !== null ? product.stock + ' units available' : 'In Stock') : 'Out of Stock' }}
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-primary" (click)="addToCart()"
+          [disabled]="product.stock !== null && product.stock !== undefined && product.stock <= 0">
+          <i class="fas fa-shopping-basket"></i> Add to Basket
+        </button>
+      </div>
+
+      <div class="trust-icons">
+        <div (click)="checkFastDelivery()"><i class="fas fa-bolt"></i> 24h Delivery</div>
+        <div (click)="triggerReturn()"><i class="fas fa-undo"></i> 30-Day Return</div>
+        <div (click)="contactSecurity()"><i class="fas fa-shield-alt"></i> Secure Pay</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-container glass-panel">
+    <h3>Customer Feedbacks</h3>
+
+    <div class="write-review-section glass-panel" *ngIf="!hasReviewed">
+      <h3>Share Your Experience</h3>
+      <div class="rating-box">
+        <div class="stars-selector">
+          <i class="fas fa-star" *ngFor="let s of [1,2,3,4,5]" [style.color]="s <= newRating ? '#f59e0b' : '#334155'"
+            (click)="setRating(s)"></i>
+        </div>
+      </div>
+      <div class="input-group">
+        <textarea [(ngModel)]="newComment" placeholder="Write your detailed review here..." rows="4"></textarea>
+      </div>
+      <button class="btn-submit-review" (click)="submitReview()" [disabled]="isSubmitting">
+        <i class="fas" [ngClass]="isSubmitting ? 'fa-spinner fa-spin' : 'fa-paper-plane'"></i>
+        {{ isSubmitting ? 'Posting...' : 'Post Review' }}
+      </button>
+    </div>
+
+    <div class="already-reviewed-section" *ngIf="hasReviewed">
+      <i class="fas fa-check-circle"></i>
+      <p>You have already submitted a review for this product.</p>
+    </div>
+
+    <hr class="section-divider" *ngIf="reviews.length > 0">
+
+    <div class="review-list" *ngIf="reviews.length > 0; else noReviews">
+      <div class="review-card" *ngFor="let r of reviews">
+        <div class="review-header">
+          <div class="reviewer-avatar">
+            {{ r.username ? r.username.charAt(0).toUpperCase() : 'U' }}
+          </div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">{{ r.username || 'Verified Buyer' }}</div>
+            <div class="review-date" *ngIf="r.reviewDate">{{ r.reviewDate | date:'mediumDate' }}</div>
+          </div>
+          <div class="review-rating-wrapper">
+            <span class="stars">
+              <i class="fas fa-star" *ngFor="let s of [1,2,3,4,5]"
+                 [style.color]="s <= r.starRating ? '#f59e0b' : '#334155'"></i>
+            </span>
+            <div class="sentiment-badge" [ngClass]="r.sentiment ? r.sentiment.toLowerCase() : 'neutral'">
+              {{ r.sentiment || 'NEUTRAL' }}
+            </div>
+          </div>
+        </div>
+
+        <p class="review-body">"{{ r.reviewText }}"</p>
+
+        <div class="seller-reply-box" *ngIf="r.sellerReply">
+          <div class="reply-header">
+            <i class="fas fa-reply fa-flip-horizontal"></i>
+            <strong>Seller's Response</strong>
+            <span class="reply-date" *ngIf="r.reviewAnswerTimestamp">
+              {{ r.reviewAnswerTimestamp | date:'mediumDate' }}
+            </span>
+          </div>
+          <p class="reply-content">{{ r.sellerReply }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noReviews>
+      <div class="no-reviews">
+        <i class="fas fa-comment-dots"></i>
+        <p>No reviews yet. Be the first to share your thoughts!</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

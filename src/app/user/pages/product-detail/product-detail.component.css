@@ -1,0 +1,235 @@
+/* --- GENEL SAYFA YAPISI --- */
+.detail-wrapper {
+  padding: 50px 20px;
+  background: #030712;
+  min-height: 100vh;
+  color: white;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 30px;
+  padding: 40px;
+}
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+}
+
+/* --- ÜRÜN DETAY ALANI --- */
+.image-section img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.price-tag {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #10b981;
+  margin: 20px 0;
+}
+
+.description {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 18px;
+  border-radius: 16px;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- YORUM KARTLARI --- */
+.reviews-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.review-card {
+  background: rgba(15, 23, 42, 0.6);
+  padding: 30px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.reviewer-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.reviewer-name {
+  font-weight: 600;
+  color: white;
+  font-size: 1.05rem;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.review-body {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-style: italic;
+  padding-left: 5px;
+}
+
+/* --- SATICI CEVABI (SELLER REPLY) --- */
+.seller-reply-box {
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 20px;
+  background: rgba(245, 158, 11, 0.07);
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+}
+
+.reply-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f59e0b;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reply-date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+.reply-content {
+  margin: 0;
+  color: #e2e8f0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* --- YORUM YAPMA FORMU --- */
+.write-review-section {
+  padding: 35px;
+  margin-bottom: 30px;
+}
+
+.stars-selector i {
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+
+.stars-selector i:hover {
+  transform: scale(1.2);
+}
+
+.input-group textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 18px;
+  color: white;
+  margin-top: 20px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.btn-submit-review {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+/* --- BADGES & STATUS --- */
+.sentiment-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.sentiment-badge.positive { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.sentiment-badge.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.sentiment-badge.neutral { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
+
+.stock-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.stock-status.low { color: #f59e0b; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+}

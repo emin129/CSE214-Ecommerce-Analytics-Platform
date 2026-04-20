@@ -1,0 +1,116 @@
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-gem"></i>
+      <span>OLIS</span>
+    </div>
+
+    <div class="menu">
+      <div class="menu-item" (click)="goToAnalytics()">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+      </div>
+
+      <div class="menu-item" (click)="goToOrders()">
+        <i class="fas fa-receipt"></i>
+        <span>Orders</span>
+      </div>
+
+      <div class="menu-item" (click)="goToCustomer()">
+        <i class="fas fa-user-friends"></i>
+        <span>Customers</span>
+      </div>
+
+      <div class="menu-item" (click)="goToReviews()">
+        <i class="fas fa-star"></i>
+        <span>Reviews</span>
+      </div>
+
+      <div class="menu-item ai" (click)="goToAI()">
+        <i class="fas fa-robot"></i>
+        <span>AI Assistant</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="dashboard-wrapper">
+
+    <div class="header-actions">
+      <h2><i class="fas fa-box"></i> Product Inventory</h2>
+
+      <button class="btn-add" (click)="addProduct()">
+        <i class="fas fa-plus"></i> New Product
+      </button>
+    </div>
+
+    <div class="glass-inventory">
+
+      <div *ngIf="isLoading" class="loader">
+        Loading dataset...
+      </div>
+
+      <div class="product-grid" *ngIf="!isLoading">
+
+        <div class="product-item" *ngFor="let p of products; trackBy: trackById">
+
+          <img [src]="p.imageUrl || 'https://placehold.co/100x100?text=No+Img'">
+
+          <div class="p-details">
+            <h4>{{ p.name }}</h4>
+            <span class="price">{{ p.price | currency:'USD' }}</span>
+          </div>
+
+          <div class="p-actions">
+            <button class="edit-btn" (click)="editProduct(p.id)">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button class="delete-btn" (click)="deleteProduct(p.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="pagination-container" *ngIf="totalPages > 1">
+
+        <button class="page-btn"
+                [disabled]="currentPage === 0"
+                (click)="onPageChange(0)">
+          <i class="fas fa-angle-double-left"></i>
+        </button>
+
+        <button class="page-btn"
+                [disabled]="currentPage === 0"
+                (click)="onPageChange(currentPage - 1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <span class="page-info">
+          Page {{ currentPage + 1 }} of {{ totalPages }}
+        </span>
+
+        <button class="page-btn"
+                [disabled]="currentPage === totalPages - 1"
+                (click)="onPageChange(currentPage + 1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <button class="page-btn last"
+                [disabled]="currentPage === totalPages - 1"
+                (click)="onPageChange(totalPages - 1)">
+          <i class="fas fa-angle-double-right"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

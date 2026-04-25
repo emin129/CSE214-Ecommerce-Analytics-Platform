@@ -37,8 +37,11 @@ DevOps & Tools	Git, GitHub, Maven, Azure Cloud
 The project follows a modular monorepo structure for seamless integration:
 
 Bash
+
 ├── 📂 backend/   # Spring Boot RESTful API & Gemini AI Logic
+
 ├── 📂 frontend/  # Angular Dashboard & Customer UI
+
 └── README.md     # Project Documentation
 
 🔧 Quick Start

@@ -1,19 +1,24 @@
+
+
 📊 E-Commerce Analytics Platform (CSE214) 🚀
 
-
-A comprehensive Full-Stack E-Commerce solution that merges modern management dashboards with advanced AI Agents. This platform provides specialized analytical tools for both Admins and Sellers, powered by the Gemini AI orchestration.
+A high-performance Full-Stack E-Commerce solution that bridges modern management dashboards with state-of-the-art AI Agent orchestration. Designed for the complex needs of today's digital marketplaces, providing specialized analytical tools for both Admins and Sellers.
 
 ✨ Key Features
 
-🤖 Multi-Agent AI Chatbot: Built with LangGraph and Gemini API to generate real-time SQL queries and provide data-driven insights.
+🤖 Multi-Agent AI Chatbot: * Powered by LangGraph & Gemini API.
 
-🔐 Secure Authentication: Role-Based Access Control (RBAC) for Admin, Seller, and Customer roles using Spring Security & JWT.
+Generates real-time Text-to-SQL queries to provide instant data-driven insights.
 
-📈 Data Visualization: Interactive sales, order tracking, and inventory charts powered by Chart.js.
+🔐 Secure Authentication (RBAC): * Fine-grained Role-Based Access Control for Admin, Seller, and Customer roles.
 
-⚙️ Automated Analytics: Backend architecture designed to generate instant store performance reports and business metrics.
+Implemented via Spring Security & JWT (JSON Web Tokens).
 
-💳 Payment Integration: Secure checkout simulation integrated with the Stripe infrastructure.
+📈 Advanced Data Visualization: * Interactive sales dashboards, order tracking, and inventory heatmaps powered by Chart.js.
+
+⚙️ Automated Business Metrics: * Backend architecture optimized for instant store performance reports and ROI calculations.
+
+💳 Secure Checkout Simulation: * Integrated with Stripe infrastructure for reliable and safe transaction simulations.
 
 🛠️ Tech Stack
 
@@ -21,40 +26,45 @@ Layer	Technologies
 
 Backend	Java 17, Spring Boot, Spring Security, JPA / Hibernate, MySQL
 
-AI Orchestration	Gemini Pro API, LangGraph, Retrieval-Augmented Generation (RAG)
+AI Orchestration	Gemini Pro API, LangGraph, RAG (Retrieval-Augmented Generation)
 
 Frontend	Angular 17+, TypeScript, Tailwind CSS, RxJS
 
-Tools & DevOps	Git, GitHub, Maven, Azure Cloud
+DevOps & Tools	Git, GitHub, Maven, Azure Cloud
 
-📂 Project Structure
+📂 Project Architecture
 
-The project is organized into two main modules:
+The project follows a modular monorepo structure for seamless integration:
 
-📂 backend/ → Spring Boot RESTful API and AI logic services.
+Bash
+├── 📂 backend/   # Spring Boot RESTful API & Gemini AI Logic
+├── 📂 frontend/  # Angular Dashboard & Customer UI
+└── README.md     # Project Documentation
 
-📂 frontend/ → Angular-based user interface and management panels.
-
-🔧 Installation & Setup
+🔧 Quick Start
 
 1️⃣ Backend Setup
 
-Configure your database settings in ecommerce-backend/src/main/resources/application.properties.
+Navigate to backend/.
 
-Add your Gemini API Key to the environment variables or properties file.
+Update src/main/resources/application.properties with your MySQL credentials.
 
-Run the application: ./mvnw spring-boot:run
+Add your GEMINI_API_KEY to your environment variables.
+
+Run: ./mvnw spring-boot:run
 
 2️⃣ Frontend Setup
 
-Navigate to the ecommerce-frontend/ directory.
+Navigate to frontend/.
 
 Install dependencies: npm install
 
-Launch the development server: ng serve (Access via http://localhost:4200)
+Start the app: ng serve
 
-👤 Developer
+Open: http://localhost:4200
 
-Mehmet Emin Ejderha
+👥 Contributors
 
-Fatih Ateş
+Mehmet Emin Ejderha – Backend & AI Orchestration
+
+Fatih Ateş – Frontend & UI/UX Design

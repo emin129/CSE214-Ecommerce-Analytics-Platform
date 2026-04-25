@@ -1,0 +1,64 @@
+.seller-container {
+  min-height: 100vh;
+  padding: 30px;
+  background: radial-gradient(circle at top right, #111827, #030712);
+  color: #fff;
+}
+
+.header-section h2 {
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 5px;
+}
+
+.glass-table-container {
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 25px;
+  overflow-x: auto;
+}
+
+.premium-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.premium-table th {
+  text-align: left;
+  padding: 15px;
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.premium-table td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-select {
+  background: #1f2937;
+  color: #6366f1;
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btn-cancel-small {
+  background: rgba(239, 44, 44, 0.1);
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-cancel-small:hover {
+  background: #ef4444;
+  color: #fff;
+}

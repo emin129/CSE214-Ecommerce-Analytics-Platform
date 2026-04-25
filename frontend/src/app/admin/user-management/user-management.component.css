@@ -1,0 +1,238 @@
+.user-container {
+  padding: 24px;
+  background: #f6f8fb;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.user-container .d-flex.justify-content-between {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* TITLE */
+.user-container h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.4px;
+  color: #1e293b;
+}
+
+/* SEARCH BOX */
+.user-container input.form-control {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  padding: 10px 14px;
+  background: #f8fafc;
+}
+
+.user-container input.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 4px rgba(13,110,253,0.12);
+  background: #fff;
+}
+
+/* SEARCH BUTTON */
+.user-container .btn-primary {
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0d6efd, #3b82f6);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.user-container .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(13,110,253,0.3);
+}
+
+/* TOTAL BADGE */
+.user-container .badge.bg-dark {
+  background: #111827 !important;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* TABLE WRAPPER */
+.table-responsive {
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+/* TABLE */
+table.table {
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.table thead th {
+  padding: 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+/* ROWS */
+.table tbody tr {
+  transition: all 0.25s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table tbody tr:hover {
+  background: #f1f5ff;
+  transform: scale(1.005);
+}
+
+/* USER INFO */
+.table tbody td {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+.table .fw-bold {
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.table small {
+  color: #64748b;
+}
+
+/* SELECT ROLE */
+.form-select-sm {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+/* SAVE BUTTON */
+.btn-outline-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-primary:hover {
+  background: #0d6efd;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* STATUS BADGE */
+.badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.bg-success {
+  background: linear-gradient(135deg, #10b981, #22c55e) !important;
+}
+
+.bg-danger {
+  background: linear-gradient(135deg, #ef4444, #f43f5e) !important;
+}
+
+/* ACTION BUTTONS */
+.btn-group .btn {
+  border-radius: 10px !important;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+/* BAN */
+.btn-warning {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border: none;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245,158,11,0.35);
+}
+
+/* UNBAN */
+.btn-secondary {
+  background: linear-gradient(135deg, #64748b, #475569);
+  border: none;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(100,116,139,0.35);
+}
+
+/* DELETE */
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239,68,68,0.35);
+}
+
+/* PAGINATION */
+.pagination-bar {
+  margin-top: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+/* PAGE INFO */
+.page-info {
+  font-weight: 600;
+  color: #334155;
+}
+
+/* PAGINATION BUTTONS */
+.btn-outline-dark {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-dark:hover {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* GO INPUT */
+.jump-box input {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ANIMATION */
+.user-container {
+  animation: fadeIn 0.5s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

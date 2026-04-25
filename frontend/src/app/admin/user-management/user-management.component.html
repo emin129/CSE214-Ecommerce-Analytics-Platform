@@ -1,0 +1,75 @@
+<div class="user-container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-dark">User Management</h2>
+
+    <div class="d-flex gap-2 w-50">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch()"
+        class="form-control"
+        placeholder="Search by username...">
+      <button class="btn btn-primary" (click)="onSearch()">Search</button>
+    </div>
+
+    <span class="badge bg-dark">Total: {{totalElements}} Users</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role Control</th>
+          <th>Status</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!isLoading">
+        <tr *ngFor="let user of users">
+          <td>
+            <div class="fw-bold">{{ user.username }}</div>
+            <small class="text-muted">{{ user.email }}</small>
+          </td>
+          <td>
+            <div class="d-flex gap-2">
+              <select [(ngModel)]="user.role" class="form-select form-select-sm w-auto">
+                <option value="USER">USER</option>
+                <option value="SELLER">SELLER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <button class="btn btn-sm btn-outline-primary" (click)="updateRole(user.id, user.role)">Save</button>
+            </div>
+          </td>
+          <td>
+            <span class="badge" [ngClass]="user.banned ? 'bg-danger' : 'bg-success'">
+              {{ user.banned ? 'BANNED' : 'ACTIVE' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group gap-2">
+              <button class="btn btn-sm btn-warning" *ngIf="!user.banned" (click)="banUser(user.id)">Ban</button>
+              <button class="btn btn-sm btn-secondary" *ngIf="user.banned" (click)="unbanUser(user.id)">Unban</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination-bar shadow-sm d-flex justify-content-between align-items-center p-3 bg-white mt-">
+    <div class="page-info">Page {{currentPage + 1}} / {{totalPages}}</div>
+    <div class="pagination-controls d-flex gap-3">
+      <div class="btn-group">
+        <button class="btn btn-outline-dark btn-sm" (click)="previousPage()" [disabled]="currentPage === 0 || isLoading">Prev</button>
+
+        <button class="btn btn-outline-dark btn-sm" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1 || isLoading">Next</button>
+      </div>
+      <div class="jump-box d-flex gap-2">
+        <input type="number" [(ngModel)]="jumpPage" (keyup.enter)="goToPage()" class="form-control form-control-sm w-25" placeholder="Go">
+        <button class="btn btn-sm btn-primary" (click)="goToPage()">Go</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="review-container">
+  <div class="header-section">
+    <div class="title-group">
+      <h1>Customer Feedback</h1>
+      <p>Manage pending reviews and store reputation</p>
+    </div>
+    <div class="header-actions">
+      <span class="total-badge">{{ stats.total }} Pending Reviews</span>
+    </div>
+  </div>
+
+  <div class="stats-overview">
+    <div class="stat-mini-card">
+      <p>Global Rating</p>
+      <div class="stat-value">
+        <span class="star-icon">★</span>
+        <h2>{{ stats.average }}</h2>
+      </div>
+    </div>
+    <div class="stat-mini-card">
+      <p>Excellent (5★)</p>
+      <h2 class="text-success">{{ stats.fiveStar }}</h2>
+    </div>
+    <div class="stat-mini-card">
+      <p>Critical (1★)</p>
+      <h2 class="text-danger">{{ stats.oneStar }}</h2>
+    </div>
+  </div>
+
+  <div class="review-list" *ngIf="!isLoading">
+    <div class="empty-state" *ngIf="filteredReviews.length === 0">
+      <p>All caught up! No pending reviews to display.</p>
+    </div>
+
+    <div class="review-card" *ngFor="let review of filteredReviews">
+      <div class="card-left">
+        <div class="user-avatar">{{ review.username?.charAt(0) || 'U' }}</div>
+      </div>
+
+      <div class="card-main">
+        <div class="review-top">
+          <div class="user-meta">
+            <span class="user-name">{{ review.username || 'Verified Buyer' }}</span>
+            <span class="sentiment-badge" *ngIf="review.sentiment" [ngClass]="review.sentiment.toLowerCase()">
+              {{ review.sentiment === 'POSITIVE' ? '😊' : review.sentiment === 'NEGATIVE' ? '😡' : '😐' }}
+            </span>
+          </div>
+
+          <div class="stars-wrapper">
+            <span class="star-filled" *ngFor="let i of [1,2,3,4,5]" [class.active]="i <= review.starRating">★</span>
+          </div>
+          <span class="date-tag">{{ review.reviewDate | date:'MMM d, y' }}</span>
+        </div>
+
+        <div class="product-info">
+          <span class="product-label">Item:</span>
+          <span class="product-name">{{ review.productName || 'Direct Purchase' }}</span>
+        </div>
+
+        <p class="comment-text">"{{ review.reviewText }}"</p>
+
+        <div class="actions-area">
+          <button class="btn-action-reply" (click)="review.isReplying = !review.isReplying">
+            {{ review.isReplying ? 'Discard' : 'Write a Response' }}
+          </button>
+
+          <button class="btn-delete" (click)="removeReview(review.id)">
+            Delete
+          </button>
+        </div>
+
+        <div class="reply-editor" *ngIf="review.isReplying">
+          <textarea #replyText placeholder="Type your response to the customer..."></textarea>
+          <div class="editor-footer">
+            <button class="btn-submit" (click)="submitReply(review, replyText.value)">
+              Send Response
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading feedback data...</p>
+  </div>
+</div>

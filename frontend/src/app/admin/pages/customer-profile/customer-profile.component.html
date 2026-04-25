@@ -1,0 +1,83 @@
+<div class="analytics-container mt-5">
+    <div class="data-card">
+        <div class="card-top d-flex justify-content-between align-items-center flex-wrap">
+            <div class="info-group">
+                <div class="status-indicator"></div>
+                <div>
+                    <h3>Admin Control Panel</h3>
+                    <p>Monitor status and update tiers via actions</p>
+                </div>
+            </div>
+
+            <div class="search-section d-flex align-items-center gap-3">
+                <div class="search-input-wrapper">
+                    <i class="bi bi-search"></i>
+                    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search username...">
+                </div>
+                <div class="header-status" *ngIf="loading">
+                    <div class="spinner-border spinner-border-sm text-primary"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-outer">
+            <table class="premium-table">
+                <thead>
+                    <tr>
+                        <th>Ref ID</th>
+                        <th>User Details</th>
+                        <th>Location</th>
+                        <th>Current Status</th>
+                        <th class="text-center">Action Center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let profile of profiles" class="table-row">
+                        <td><span class="id-val">#{{ profile.id }}</span></td>
+                        <td>
+                            <div class="user-info">
+                                <span class="main-text">{{ profile.username || 'N/A' }}</span>
+                                <span class="sub-text">UID: {{ profile.userId }} | {{ profile.zipCodePrefix }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="location-info">
+                                <span class="main-text">{{ profile.city }}</span>
+                                <span class="sub-text">{{ profile.state }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge" [attr.data-status]="profile.membershipType">
+                                {{ profile.membershipType | uppercase }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <div class="action-group">
+                                <select class="action-select" [(ngModel)]="profile.membershipType">
+                                    <option value="gold">GOLD</option>
+                                    <option value="silver">SILVER</option>
+                                    <option value="bronze">BRONZE</option>
+                                </select>
+                                <button class="update-btn" (click)="updateProfile(profile)" [disabled]="loading">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-bottom">
+            <div class="page-summary">Page {{ page + 1 }} of {{ totalPages }} ({{ totalElements }} Total)</div>
+            <div class="pagination-actions">
+                <button class="control-btn" [disabled]="page === 0" (click)="changePage(page - 1)">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="control-btn" [disabled]="page >= totalPages - 1" (click)="changePage(page + 1)">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

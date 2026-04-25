@@ -1,0 +1,86 @@
+/* Background */
+body, .bg-light {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+}
+
+/* Card */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+}
+
+/* Title */
+h3 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0,255,255,0.6);
+}
+
+/* Labels */
+.form-label {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Inputs */
+.form-control {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.form-control:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* Placeholder */
+.form-control::placeholder {
+  color: #aaa;
+}
+
+/* Button */
+.btn-success {
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+/* Link */
+a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 8px #00ffff;
+}
+
+/* Small text */
+small {
+  color: #bbb;
+}

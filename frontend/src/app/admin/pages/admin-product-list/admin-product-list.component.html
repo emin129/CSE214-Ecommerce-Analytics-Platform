@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-between align-items-center mb-4 p-3 glass-panel">
+  <button class="vivid-btn-secondary" (click)="goBack()">BACK TO DASHBOARD</button>
+  <a routerLink="/admin/products/add" class="vivid-btn-success">INITIALIZE NEW PRODUCT</a>
+</div>
+
+<div class="d-flex gap-3 mb-4 p-3 glass-panel align-items-center">
+  <input
+    type="text"
+    class="form-control cyber-input"
+    placeholder="SEARCH PRODUCT..."
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="loadProducts()" />
+
+  <button class="cyber-page-btn" (click)="loadProducts()">SEARCH</button>
+
+  <select
+    class="form-control cyber-input"
+    [(ngModel)]="selectedCategory"
+    (change)="loadProducts()">
+    <option [ngValue]="null">ALL CATEGORIES</option>
+    <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.name }}</option>
+  </select>
+
+  <button class="cyber-page-btn" (click)="resetFilters()">RESET</button>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let product of products">
+    <div class="product-card-wrapper">
+      <app-product-card
+        [product]="product"
+        (edit)="editProduct($event)"
+        (delete)="deleteProduct($event)">
+      </app-product-card>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mt-5 p-4 pagination-vivid">
+  <div class="status-text">
+    TOTAL_ASSETS: <strong>{{totalElements}}</strong> | NODE: <strong>{{currentPage + 1}} / {{totalPages}}</strong>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <div class="btn-group-cyber">
+      <button
+        class="cyber-page-btn"
+        (click)="previousPage()"
+        [disabled]="currentPage === 0 || isLoading">PREV</button>
+      <button
+        class="cyber-page-btn"
+        (click)="nextPage()"
+        [disabled]="currentPage >= totalPages - 1 || isLoading">NEXT</button>
+    </div>
+
+    <div class="jump-to-page d-flex align-items-center gap-2 ms-5">
+      <input
+        type="number"
+        min="1"
+        [max]="totalPages"
+        [(ngModel)]="jumpPage"
+        (keyup.enter)="goToPage()"
+        class="form-control cyber-input"
+        placeholder="PAGE" />
+      <button class="cyber-page-btn" (click)="goToPage()" [disabled]="isLoading">GO</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,266 @@
+/* =========================
+   BACKGROUND
+========================= */
+.cyber-bg {
+  background: radial-gradient(circle at top left, #0f2027, #000000 60%);
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+.cyber-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+.cyber-subtitle {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.text-green { color: #00ff9c; }
+.text-cyan { color: #00e5ff; }
+
+/* =========================
+   CARD
+========================= */
+.cyber-card {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+.cyber-thead {
+  background: linear-gradient(90deg, #00e5ff20, transparent);
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.cyber-row:hover {
+  background: rgba(0,255,255,0.08);
+  transition: 0.3s;
+}
+
+/* =========================
+   AVATAR
+========================= */
+.avatar-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00e5ff, #00ff9c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: black;
+  margin-right: 10px;
+}
+
+/* =========================
+   USER TEXT
+========================= */
+.user-id-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.badge-verified {
+  font-size: 10px;
+  color: #00ff9c;
+}
+
+/* =========================
+   PRODUCT BOX
+========================= */
+.product-name-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =========================
+   STARS
+========================= */
+.star-rating-cyber i {
+  color: #ffc107;
+  margin-right: 2px;
+  text-shadow: 0 0 5px #ffc107;
+}
+
+/* =========================
+   COMMENT
+========================= */
+.comment-log-container {
+  max-width: 350px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+/* =========================
+   SENTIMENT
+========================= */
+.sentiment-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.sentiment-pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* POSITIVE */
+.sentiment-pill.positive {
+  background: rgba(0,255,150,0.15);
+  color: #00ff9c;
+}
+.sentiment-pill.positive .dot {
+  background: #00ff9c;
+}
+
+/* NEGATIVE */
+.sentiment-pill.negative {
+  background: rgba(255,0,80,0.15);
+  color: #ff3b6b;
+}
+.sentiment-pill.negative .dot {
+  background: #ff3b6b;
+}
+
+/* NEUTRAL */
+.sentiment-pill.neutral {
+  background: rgba(200,200,200,0.15);
+  color: #aaa;
+}
+.sentiment-pill.neutral .dot {
+  background: #aaa;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-nav-hex,
+.btn-jump,
+.btn-cyber-back,
+.btn-purge {
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+/* NAV BUTTON */
+.btn-nav-hex {
+  background: rgba(0,255,255,0.1);
+  color: #00e5ff;
+}
+.btn-nav-hex:hover {
+  background: #00e5ff;
+  color: black;
+}
+
+/* DELETE */
+.btn-purge {
+  background: rgba(255,0,80,0.2);
+  color: #ff3b6b;
+}
+.btn-purge:hover {
+  background: #ff3b6b;
+  color: white;
+}
+
+/* JUMP */
+.btn-jump {
+  background: linear-gradient(135deg, #00e5ff, #00ff9c);
+  color: black;
+  font-weight: bold;
+}
+.btn-jump:hover {
+  opacity: 0.8;
+}
+
+/* BACK */
+.btn-cyber-back {
+  background: transparent;
+  border: 1px solid #888;
+  color: #ccc;
+}
+.btn-cyber-back:hover {
+  border-color: #00e5ff;
+  color: #00e5ff;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-page-jump {
+  background: #000;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  width: 90px;
+}
+
+/* =========================
+   REPLY PANEL
+========================= */
+.reply-detail-box {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(0,255,255,0.2);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.cyber-footer {
+  background: #050505;
+  border-top: 1px solid rgba(0,255,255,0.2);
+}
+
+/* =========================
+   PAGE INDICATOR
+========================= */
+.page-indicator-pill {
+  background: #00e5ff;
+  color: black;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* =========================
+   TERMINAL TEXT
+========================= */
+.terminal-text {
+  font-family: monospace;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+.btn-nav-hex:hover,
+.btn-jump:hover,
+.btn-purge:hover {
+  box-shadow: 0 0 10px currentColor;
+}

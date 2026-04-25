@@ -1,0 +1,89 @@
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-box"><i class="fas fa-chart-bar"></i></div>
+      <span class="brand-name">DataPulse</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">MAIN MENU</div>
+      <a routerLink="/admin/dashboard" class="nav-item active"><i class="fas fa-home"></i> Dashboard</a>
+      <a routerLink="/admin/ai-assistant" class="nav-item">
+        <i class="fas fa-robot"></i> AI Assistant <span class="badge-new">New</span>
+      </a>
+      <a routerLink="/admin/analytics" class="nav-item"><i class="fas fa-chart-line"></i> Analytics</a>
+      <a routerLink="/admin/orders" class="nav-item"><i class="fas fa-shopping-cart"></i> Orders</a>
+      <a routerLink="/admin/products" class="nav-item"><i class="fas fa-store"></i> Products</a>
+      <a routerLink="/admin/customerProfile" class="nav-item"><i class="fas fa-user-circle"></i> Customer Profile</a>
+
+      <div class="nav-section mt-4">MANAGEMENT</div>
+      <a routerLink="/admin/user-management" class="nav-item"><i class="fas fa-users"></i> Users</a>
+      <a routerLink="/admin/settings" class="nav-item"><i class="fas fa-store"></i> Store Settings</a>
+      <a routerLink="/admin/review" class="nav-item"><i class="fas fa-store"></i> Review</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="content-header">
+      <div class="welcome-text">
+        <h2 class="fw-bold text-white mb-1">Welcome back 👋</h2>
+        <p class="text-secondary small m-0">Comprehensive summary of platform performance</p>
+      </div>
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+
+      </div>
+    </header>
+
+    <div class="row g-4 mb-4">
+      <div class="col-xl-3 col-md-6" *ngFor="let item of [
+        { label: 'Total Revenue', val: stats.totalRevenue, change: stats.revenueChange, icon: 'fa-money-bill-wave', cls: 'rev' },
+        { label: 'Total Orders', val: stats.totalOrders, change: stats.orderChange, icon: 'fa-archive', cls: 'ord' },
+        { label: 'Customers', val: stats.totalCustomers, change: stats.customerChange, icon: 'fa-user-friends', cls: 'cus' },
+        { label: 'Avg Rating', val: stats.avgRating, change: stats.ratingChange, icon: 'fa-star', cls: 'rat' }
+      ]">
+        <div class="stat-card-v2">
+          <div class="card-header-v2">
+            <div class="icon-box" [ngClass]="item.cls"><i class="fas {{item.icon}}"></i></div>
+            <div class="trend-badge" [class.negative]="item.change?.includes('-')">
+              {{item.change}}
+            </div>
+          </div>
+          <div class="card-body-v2">
+            <h2 class="stat-value">
+              {{ (item.label.includes('Revenue') ? '$' : '') }}{{ item.val | number: (item.label === 'Avg Rating' ? '1.1-1' : '1.0-0') }}
+            </h2>
+            <p class="stat-label">{{item.label}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-panel">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="text-white fw-bold m-0">Category Sales Overview</h5>
+      </div>
+
+      <div class="chart-wrapper">
+        <div *ngIf="isLoading" class="text-center py-5 text-white">
+          <div class="spinner-border text-indigo mb-2" role="status"></div>
+          <p>Analyzing e-commerce data...</p>
+        </div>
+
+        <apx-chart
+          *ngIf="!isLoading && chartOptions?.series?.[0]?.data?.length > 0"
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [yaxis]="chartOptions.yaxis"
+          [stroke]="chartOptions.stroke"
+          [fill]="chartOptions.fill"
+          [grid]="chartOptions.grid"
+          [markers]="chartOptions.markers"
+          [tooltip]="chartOptions.tooltip"
+          [colors]="['#6366f1']">
+        </apx-chart>
+      </div>
+    </div>
+  </main>
+</div>

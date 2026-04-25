@@ -1,0 +1,347 @@
+/* 🔥 GLOBAL & FULLSCREEN FIX */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Dış kaydırma çubuğunu kapattık, içerde kaydıracağız */
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Daha modern bir font */
+}
+
+app-root {
+  height: 100%;
+  display: block;
+}
+
+/* 🔥 ANA WRAPPER (Çok koyu lacivert/siyah arka plan) */
+.ai-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b1120;
+  background-image: radial-gradient(at top left, rgba(30, 41, 59, 0.5), transparent); /* Hafif derinlik efekti */
+  color: #f1f5f9;
+}
+
+/* HEADER (Temiz ve modern) */
+.ai-header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  background: rgba(11, 17, 32, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px); /* Frosted glass efekti */
+  z-index: 10;
+}
+
+.ai-header .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: #10b981; /* Canlı yeşil */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981; /* Yeşil ışıma */
+}
+
+.avatar-header {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border-radius: 10px; /* Daha köşeli modern avatar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+}
+
+/* CHAT AREA */
+.ai-chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px 0;
+  height: 0;
+}
+
+/* Mesajların aşırı yayılmaması için kısıtlı alan */
+.chat-inner {
+  max-width: 850px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* MESSAGE BUBBLES (Köşeli ve modern) */
+.msg {
+  display: flex;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.msg.user {
+  justify-content: flex-end;
+}
+
+.msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-top: 2px;
+}
+
+.msg.bot .msg-avatar {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  margin-right: 12px;
+}
+
+.msg.user .msg-avatar {
+  background-color: rgba(129, 140, 248, 0.1);
+  color: #818cf8;
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  margin-left: 12px;
+  order: 2; /* Avatarı sağa at */
+}
+
+.bubble {
+  padding: 15px 20px;
+  border-radius: 12px;
+  max-width: 75%;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* 🤖 BOT BALONU (Yarı şeffaf, koyu kart ve parlak yazı) */
+.msg.bot .bubble {
+  background-color: rgba(15, 23, 42, 0.8); /* Belirgin bir koyu lacivert */
+  color: #e2e8f0; /* Genel metin rengi yumuşak beyaz */
+  border: 1px solid rgba(56, 189, 248, 0.15); /* Kenarlarda hafif turkuaz ışıma */
+  backdrop-filter: blur(8px);
+  border-top-left-radius: 2px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔥 BOTUN YAZDIĞI KALIN YAZILARI (HAFTALAR, PARALAR VS.) PARLATAN SİHİRLİ KOD */
+.msg.bot .bubble strong {
+  color: #00f2fe; /* Parlayan Neon Turkuaz/Cyan */
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.4); /* Arkasına hafif neon parlama */
+}
+
+/* Botun oluşturduğu liste maddelerini daha okunaklı yapıyoruz */
+.msg.bot .bubble ul, .msg.bot .bubble li {
+  margin-left: 5px;
+  padding-left: 5px;
+  color: #f8fafc; /* Liste yazıları daha parlak beyaz */
+}
+
+/* 👤 KULLANICI BALONU (Morumsu/mavi modern kart) */
+.msg.user .bubble {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border-top-right-radius: 2px;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  order: 1;
+  font-weight: 500;
+}
+
+/* 📊 DATA VISUALIZATION CARD (Siyah kart) */
+.chart-card {
+  margin-top: 15px;
+  background-color: #030712; /* Tam siyah/koyu kart arka planı */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chart-icon {
+  color: #38bdf8;
+  font-size: 1.1rem;
+}
+
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.5px;
+}
+
+/* Grafik kutusunun yüksekliği (320px yaptık ki yazılar sıkışmasın) */
+.chart-container {
+  height: 320px;
+  width: 100%;
+  position: relative;
+}
+
+canvas {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* 🕵️ AGENT LOGS (Siberpunk yeşil/pembe loglar) */
+.logs-container {
+  margin-top: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  font-family: 'Fira Code', 'Courier New', monospace; /* Kod yazı tipi */
+  font-size: 0.75rem;
+}
+
+.log-entry {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.log-agent {
+  color: #f472b6; /* Pembe ajan ismi */
+  font-weight: 600;
+}
+
+.log-action {
+  color: #34d399; /* Yeşil eylem */
+}
+
+/* 🔥 TYPING EFFECT (Neon ışıma) */
+.typing {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.typing span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38bdf8; /* Neon ışıma efekti */
+  animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(0.9); }
+  20% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.2; transform: scale(0.9); }
+}
+
+/* INPUT AREA (Modern ve temiz) */
+.ai-input {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(11, 17, 32, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+/* Giriş alanının genişliğini kısıtladık */
+.input-box-wrapper {
+  max-width: 850px;
+  margin: auto;
+}
+
+.input-box {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px; /* Daha modern köşeler */
+  padding: 6px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Parlayan fokus efekti */
+.input-box:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.input-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 12px 15px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input-box button {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+}
+
+.input-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(56, 189, 248, 0.3);
+}
+
+.input-box button:disabled {
+  background: #334155;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

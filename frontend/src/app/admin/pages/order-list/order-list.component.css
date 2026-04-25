@@ -1,0 +1,343 @@
+/* =========================
+   DASHBOARD BASE
+========================= */
+.olis-dashboard {
+  min-height: 100vh;
+  background: #0b1220;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+.dashboard-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f8fafc;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* =========================
+   REFRESH BUTTON
+========================= */
+.btn-refresh {
+  background: #111827;
+  border: 1px solid #1f2937;
+  color: #38bdf8;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-refresh:hover {
+  background: #1f2937;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.olis-glass-card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+.olis-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.olis-table thead {
+  background: #111827;
+}
+
+.olis-table th {
+  padding: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.olis-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.olis-table-row {
+  transition: 0.2s;
+}
+
+.olis-table-row:hover {
+  background: #111827;
+}
+
+/* =========================
+   ID CELL
+========================= */
+.id-cell code {
+  background: #0b1220;
+  color: #38bdf8;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* =========================
+   CUSTOMER
+========================= */
+.customer-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.olis-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.customer-info .username {
+  font-size: 13px;
+  color: #f1f5f9;
+}
+
+.uid-tag {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* =========================
+   AMOUNT
+========================= */
+.amount-cell {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* =========================
+   DATE
+========================= */
+.date-cell {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.main-date {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.sub-time {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* =========================
+   STATUS BADGE
+========================= */
+.olis-status-badge {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* STATUS COLORS */
+.olis-status-badge.pending {
+  background: #1f2937;
+  color: #f59e0b;
+}
+
+.olis-status-badge.shipped {
+  background: #0f2533;
+  color: #38bdf8;
+}
+
+.olis-status-badge.delivered {
+  background: #0f2a1f;
+  color: #22c55e;
+}
+
+.olis-status-badge.cancelled {
+  background: #2a0f0f;
+  color: #ef4444;
+}
+
+/* =========================
+   SELECT
+========================= */
+.olis-select {
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+}
+
+.olis-select:focus {
+  border-color: #38bdf8;
+}
+
+/* =========================
+   COMMAND BUTTON (REFUND)
+========================= */
+.btn-oli-danger {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-oli-danger:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.olis-pagination {
+  background: gray;
+  border-top: 1px solid #1f2937;
+}
+
+/* pagination buttons */
+.btn-pagi-glass {
+  background: #111827;
+  border: 1px solid blue;
+  color: #e5e7eb;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-pagi-glass:hover {
+  background: #1f2937;
+}
+
+.btn-pagi-glass:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* refresh icon */
+.refresh-btn i {
+  color: #38bdf8;
+}
+
+/* page jump */
+.page-jump {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-jump input {
+  width: 70px;
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+  outline: none;
+}
+
+.page-jump input:focus {
+  border-color: #38bdf8;
+}
+
+.page-jump button {
+  background: #111827;
+  border: 1px solid #1f2937;
+  color: #38bdf8;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.page-jump button:hover {
+  background: #1f2937;
+}
+
+/* =========================
+   LOADING
+========================= */
+.ulis-loading-signal {
+  text-align: center;
+}
+
+.scanner-effect {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  animation: scan 1.4s infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .olis-table th,
+  .olis-table td {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .olis-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .page-jump {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* buton yazıları mobilde gizle */
+  .btn-pagi-glass span,
+  .btn-refresh span,
+  .btn-oli-danger span {
+    display: none;
+  }
+}
